@@ -38,3 +38,87 @@ p {
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
+
+
+/* Body */
+
+body {
+	background-color: rgb(45, 44, 44);
+}
+
+/* Main container */
+
+#content {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* Header */
+
+header {
+	display: flex;
+	justify-content: space-between;
+	color: white;
+}
+
+/* Header Menu */
+
+nav {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	width: 0;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 100%;
+	/* If width is 0 and horizontal overflow is not hidden the idems could be seen */
+	overflow-x: hidden;
+	/* Transition speed */
+	transition: 0.5s;
+	background-color: rgb(45, 44, 44);
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+}
+
+.openBtn:hover {
+	cursor: pointer;
+}
+
+.closeBtn {
+	text-align: right;
+}
+
+.openBtn,
+.closeBtn {
+	font-size: clamp(1.5rem, 2rem + 0.5vw, 3rem);
+	padding: 1rem;
+}
+
+nav a {
+	font-size: clamp(1rem, 1.5rem + 0.5vw, 3rem);
+	padding: 0.5rem 2rem;
+}
+
+
+/* Logo */
+
+.logoDiv {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: clamp(1rem, 2rem + 0.5vw, 3rem);
+}
+
+
+/* Middle Content */
+
+#mainContent {
+	flex: 1;
+}
