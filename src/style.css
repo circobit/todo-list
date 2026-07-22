@@ -60,7 +60,7 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	color: white;
+	color: rgb(169, 167, 167);
 }
 
 /* Header Menu */
@@ -83,7 +83,7 @@ nav {
 
 nav a {
 	text-decoration: none;
-	color: white;
+	color: rgb(169, 167, 167);
 }
 
 .openBtn:hover {
@@ -121,4 +121,16 @@ nav a {
 
 #mainContent {
 	flex: 1;
+}
+
+
+/* Media queries to use hover just if a mouse is available.
+This avoids the buttons to stay colored in mobile. */
+
+@media (hover: hover) {
+	.openBtn:hover,
+	.closeBtn:hover,
+	nav a:hover {
+		color: white;
+	}
 }
