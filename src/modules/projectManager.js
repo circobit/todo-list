@@ -50,7 +50,7 @@ class Project {
 
 
 // App controller
-const appController = (() => {
+export const appController = (() => {
 	// Store projects and current project
 	let projects = [];
 	let currentProject = null;
