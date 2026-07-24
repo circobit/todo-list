@@ -185,15 +185,52 @@ projectview {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 }
 
-.todoCheckBtn,
+.todoCheckBtn {
+	background-color: rgb(55, 53, 53);
+	border: 1px solid rgb(110, 110, 110);
+	border-radius: 4px;
+	width: 27px;
+    height: 27px;
+	position: relative;
+	cursor: pointer;
+}
+
+.todoCheckBtn::after {
+	/* it is required to set the 'content' attribute */
+	content: "";
+	/* Set position to 'absolute' for it to respect the limit of the button */
+	position: absolute;
+	top: 0px;
+	left: 8px;
+	width: 10px;
+	height: 20px;
+	border-width: 0 2px 2px 0;
+	border-style: solid;
+	color: white;
+	transform: rotate(45deg);
+	opacity: 0;
+	/* Smooth transition of appearance */
+	transition: opacity 0.2s ease-in-out;
+}
+
+.todoCheckBtn.completed {
+	background-color: rgb(29, 80, 31);
+	border-color: rgb(29, 80, 31);
+}
+
+/* When the button is marked as done */
+.todoCheckBtn.completed::after {
+    opacity: 1;
+}
+
 .todoDeleteBtn {
 	background-color: rgb(45, 44, 44);
 	border: none;
 }
 
-.todoCheckBtn,
 .todoDeleteBtn svg {
 	width: 24px;
     height: 24px;
