@@ -129,7 +129,7 @@ nav a {
 }
 
 nav a {
-	font-size: clamp(1rem, 1.5rem + 0.5vw, 3rem);
+	font-size: clamp(2rem, 2rem + 0.5vw, 3rem);
 	padding: 0.5rem 2rem;
 }
 
