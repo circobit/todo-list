@@ -1,3 +1,5 @@
+// domController.js
+
 import { appController } from "./projectManager.js";
 import trashCan from "../assets/images/icons/trash-can.svg";
 import tag from "../assets/images/icons/tag.svg";
@@ -21,69 +23,93 @@ export const domController = (() => {
 		const project = appController.getProjectById(id);
 		// Get project items
 		const projectItems = project.todos;
+		console.log(`Print Todo's list: ${projectItems}`);
+		console.log(projectItems[0]);
 		// Clean previous content in #mainContent
-		const mainContent = document.getElementById("mainContent");
-		mainContent.innerHTML = "";
+		const projectView = document.createElement("projectView");
+		projectView.innerHTML = "";
 		// Add project div
 		const projectTitleDiv = document.createElement("div");
 		projectTitleDiv.className = "projectDiv";
 		projectTitleDiv.textContent = project.name;
-		mainContent.appendChild(projectTitleDiv);
+		projectView.appendChild(projectTitleDiv);
 		// Add container of ToDo's list
 		const todoList = document.createElement("div");
 		todoList.className = "todoList";
-		mainContent.appendChild(todoList);
+		projectView.appendChild(todoList);
 		// Add ToDo's cards
 		projectItems.forEach((todo) => {
 			// Create html elements
 			const todoCard = document.createElement("div");
 			todoCard.className = "todoCard";
-			const todoCardTop = document.createElement("div");
-			todoCardTop.className = "todoCardTop";
-			todoCard.appendChild(todoCardTop);
-			const todoCardBottom = document.createElement("div");
-			todoCardBottom.className = "todoCardBottom";
-			todoCard.appendChild(todoCardBottom);
+			const todoCardLeft = document.createElement("div");
+			todoCardLeft.className = "todoCardLeft";
+			todoCard.appendChild(todoCardLeft);
+			const todoCardRight = document.createElement("div");
+			todoCardRight.className = "todoCardRight";
+			todoCard.appendChild(todoCardRight);
 			const todoCheckBtn= document.createElement("button");
 			todoCheckBtn.className = "todoCheckBtn";
-			todoCardTop.appendChild(todoCheckBtn);
-			const todoTitle = document.createElement("div");
-			todoTitle.className = "todoTitle";
-			todoTitle.textContent = todo.title;
-			todoCardTop.appendChild(todoTitle);
-			const todoTag = document.createElement("div");
-			todoTag.className = "todoTag";
-			todoTag.textContent = todo.priority;
-			todoCardTop.appendChild(todoTag);
+			todoCardLeft.appendChild(todoCheckBtn);
 			const todoDeleteBtn= document.createElement("button");
 			todoDeleteBtn.className = "todoDeleteBtn";
 			todoDeleteBtn.innerHTML = trashCan;
-			todoCardBottom.appendChild(todoDeleteBtn);
+			todoCardLeft.appendChild(todoDeleteBtn);
+			const todoTitleAndDescription = document.createElement("div");
+			todoTitleAndDescription.className = "todoTitleAndDescription";
+			todoCardRight.appendChild(todoTitleAndDescription);
+			const todoTitle = document.createElement("div");
+			todoTitle.className = "todoTitle";
+			todoTitle.textContent = todo.title;
+			todoTitleAndDescription.appendChild(todoTitle);
 			const todoDescription = document.createElement("div");
 			todoDescription.className = "todoDescription";
 			todoDescription.textContent = todo.description;
-			todoCardBottom.appendChild(todoDescription);
+			todoTitleAndDescription.appendChild(todoDescription);
+			const todoTagAndDueDate = document.createElement("div");
+			todoTagAndDueDate.className = "todoTagAndDueDate";
+			todoCardRight.appendChild(todoTagAndDueDate);
+			const todoTag = document.createElement("div");
+			todoTag.className = "todoTag";
+			todoTagAndDueDate.appendChild(todoTag);
+			const todoTagSvg = document.createElement("div");
+			todoTagSvg.className = "todoTagSvg";
+			todoTagSvg.innerHTML = tag;
+			todoTag.appendChild(todoTagSvg);
+			const todoTagText = document.createElement("div");
+			todoTagText.className = "todoTagText";
+			todoTagText.textContent = todo.priority;
+			todoTag.appendChild(todoTagText);
 			const todoDueDate = document.createElement("div");
 			todoDueDate.className = "todoDueDate";
-			todoDueDate.textContent = todo.dueDate;
-			todoCardBottom.appendChild(todoDueDate);
+			todoTagAndDueDate.appendChild(todoDueDate);
+			const todoDueDateSvg = document.createElement("div");
+			todoDueDateSvg.className = "todoDueDateSvg";
+			todoDueDateSvg.innerHTML = calendar;
+			todoDueDate.appendChild(todoDueDateSvg);
+			const todoDueDateText = document.createElement("div");
+			todoDueDateText.className = "todoDueDateText";
+			todoDueDateText.textContent = todo.dueDate;
+			todoDueDate.appendChild(todoDueDateText);
 			// Event listeners
 			todoCheckBtn.addEventListener('click', (element) => toggleComplete(element, todoTitle, todo));
+			// Append ToDo card to the ToDo List
+			todoList.appendChild(todoCard);
 		});
 
-		return mainContent;
+		return projectView;
 	}
 
 	
 	function renderProjectList() {
-		// Clean previous content in #mainContent
-		const mainContent = document.getElementById("mainContent");
-		mainContent.innerHTML = "";
+		// Clean previous content in #projectListView
+		const projectListView = document.createElement("projectListView");
+		projectListView.innerHTML = "";
 		// Add title
 		const sectionTitle = document.createElement("div");
 		sectionTitle.className = "sectionTitle";
 		sectionTitle.textContent = "PROJECTS";
-		mainContent.appendChild(sectionTitle);
+		projectListView.appendChild(sectionTitle);
         // Iterate through the project list and create elements
 		const projects = appController.getProjects();
 		projects.forEach((project) => {
@@ -91,10 +117,10 @@ export const domController = (() => {
 			projectCard.className = "projectCard";
 			projectCard.dataset.id = project.id;
 			projectCard.textContent = project.name;
-			mainContent.appendChild(projectCard);
+			projectListView.appendChild(projectCard);
 		});
 
-		return mainContent;
+		return projectListView;
 	}
 
 	return { renderProject, renderProjectList };
