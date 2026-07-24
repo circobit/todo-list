@@ -103,6 +103,7 @@ export const appController = (() => {
 
 	// Get project by id
 	function getProjectById(id) {
+		const project = projects.find(project => project.id === id);
 		return projects.find(project => project.id === id);
 	}
 
