@@ -1,6 +1,8 @@
+// projectManager.js
+
 // ToDo Class
 class Todo {
-	constructor(title, description, dueDate, priority) {
+	constructor(title, description, dueDate = "No Date", priority) {
 		this.id = crypto.randomUUID();
 		this.title = title;
 		this.description = description;
