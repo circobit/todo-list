@@ -6,13 +6,14 @@ import tag from "../assets/images/icons/tag.svg";
 import calendar from "../assets/images/icons/calendar.svg";
 
 // Helper function to change complete status
-function toggleComplete(button, todoTitle, todo) {
+function toggleComplete(button, todoTitle, todoDescription, todo) {
 	// Change completed status in todo object
 	todo.toggleComplete();
 	// Add or remove class lists in elements to 
 	// change them visually from CSS
 	button.classList.toggle("completed");
 	todoTitle.classList.toggle("todoDone");
+	todoDescription.classList.toggle("todoDone");
 };
 
 // Dom controller
@@ -92,7 +93,7 @@ export const domController = (() => {
 			todoDueDateText.textContent = todo.dueDate;
 			todoDueDate.appendChild(todoDueDateText);
 			// Event listeners
-			todoCheckBtn.addEventListener('click', (element) => toggleComplete(element, todoTitle, todo));
+			todoCheckBtn.addEventListener('click', () => toggleComplete(todoCheckBtn, todoTitle, todoDescription, todo));
 			// Append ToDo card to the ToDo List
 			todoList.appendChild(todoCard);
 		});
