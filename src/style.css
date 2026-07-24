@@ -40,10 +40,38 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Fonts */
+
+@font-face {
+	font-family: "Roboto";
+	src: url("./assets/fonts/Roboto-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("./assets/fonts/Roboto-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url("./assets/fonts/Roboto-Black.ttf") format("truetype");
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+
 /* Body */
 
 body {
 	background-color: rgb(45, 44, 44);
+	font-family: "Roboto";
 }
 
 /* Main container */
