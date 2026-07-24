@@ -63,6 +63,10 @@ export const appController = (() => {
 		const defaultProject = new Project("I'm your default Project!");
 		projects.push(defaultProject);
 		currentProject = defaultProject;
+		// Create ToDo to attach to default project
+		const newTodo = new Todo("I'm a task", "I'm a description", undefined, "Low");
+		// Add todo to Project
+		defaultProject.addTodo(newTodo);
 	}
 
 	// Ininitalize
