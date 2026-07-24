@@ -149,6 +149,129 @@ nav a {
 
 #mainContent {
 	flex: 1;
+	width: min(50rem, 85vw);
+	margin: auto;
+}
+
+projectview {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding-top: 1rem;
+}
+
+
+/* Project Title */
+
+.projectDiv {
+	font-size: clamp(1rem, 1.5rem + 0.5vw, 3rem);
+	color: white;
+}
+
+
+/* Todo Card */
+
+.todoCard {
+	display: grid;
+	grid-template-columns: 2rem 1fr;
+	grid-template-rows: 3fr;
+	border: 1px solid grey;
+	border-radius: 15px;
+	padding: 1.5rem;
+	gap: 1rem;
+}
+
+.todoCardLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.todoCheckBtn,
+.todoDeleteBtn {
+	background-color: rgb(45, 44, 44);
+	border: none;
+}
+
+.todoCheckBtn,
+.todoDeleteBtn svg {
+	width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.todoCardRight {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.todoTitleAndDescription{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.todoTitle {
+	color: white;
+	font-weight: bold;
+	font-size: clamp(0.65rem, 1rem + 1vw, 1rem);
+}
+
+.todoDescription {
+	color: rgb(152, 150, 150);
+}
+
+.todoTagAndDueDate {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5rem;
+}
+
+.todoTagAndDueDate svg {
+	width: 1em;
+	height: 1em;
+}
+
+.todoTag,
+.todoDueDate {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+	font-size: clamp(0.65rem, 0.4rem + 1vw, 0.85rem);
+	padding: 0.2em 0.6em;
+}
+
+.todoTag {
+	background-color: rgb(141, 142, 142);
+	border: 1px solid rgb(141, 142, 142);
+	border-radius: 15px;
+	color: rgb(57, 58, 58);
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+
+.todoTag svg {
+	fill: rgb(57, 58, 58);
+}
+
+.todoDueDate {
+	background-color: rgb(10, 131, 168);
+	border: 1px solid rgb(10, 131, 168);
+	border-radius: 15px;
+	color: rgb(5, 62, 79);
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+
+.todoDueDate svg {
+	fill: rgb(5, 62, 79);
+}
+
+.todoDone {
+	text-decoration: line-through;
 }
 
 
@@ -160,5 +283,35 @@ This avoids the buttons to stay colored in mobile. */
 	.closeBtn:hover,
 	nav a:hover {
 		color: white;
+	}
+
+	.todoDeleteBtn svg:hover {
+		fill: rgb(180, 5, 5);
+		cursor: pointer;
+	}
+}
+
+
+/* Media queries to increase grid columns based in screen width */
+
+@media (min-width: 640px) {
+	.todoCardRight {
+		display: grid;
+		grid-template-columns: 1fr max-content;
+	}
+
+	.todoTagAndDueDate {
+		display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 0.5rem;
+	}
+
+	.todoTitleAndDescription {
+		display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.2rem;
 	}
 }
