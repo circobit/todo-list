@@ -248,6 +248,7 @@ projectview {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	min-width: 0;
 }
 
 .todoTitle {
@@ -258,6 +259,14 @@ projectview {
 
 .todoDescription {
 	color: rgb(152, 150, 150);
+	/* Enable old flexbox WebKit */
+	display: -webkit-box;
+	/* Define vertical orientation of the box */
+	-webkit-box-orient: vertical;
+	/* Number of lines to show */
+	-webkit-line-clamp: 2; 
+	/* Hide overflowing text */
+	overflow: hidden;
 }
 
 .todoTagAndDueDate {
@@ -276,7 +285,7 @@ projectview {
 	display: flex;
 	align-items: center;
 	gap: 0.2rem;
-	font-size: clamp(0.5rem, 0.4rem + 1vw, 0.85rem);
+	font-size: clamp(0.4rem, 0.4rem + 0.9vw, 0.85rem);
 	padding: 0.2em 0.6em;
 }
 
