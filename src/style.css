@@ -169,6 +169,15 @@ projectview {
 }
 
 
+/* Todo List */
+
+.todoList {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+
 /* Todo Card */
 
 .todoCard {
@@ -267,7 +276,7 @@ projectview {
 	display: flex;
 	align-items: center;
 	gap: 0.2rem;
-	font-size: clamp(0.65rem, 0.4rem + 1vw, 0.85rem);
+	font-size: clamp(0.5rem, 0.4rem + 1vw, 0.85rem);
 	padding: 0.2em 0.6em;
 }
 
