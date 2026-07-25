@@ -321,6 +321,26 @@ projectview {
 	text-decoration: line-through;
 }
 
+.todoTag.medium {
+	background-color: rgb(217, 205, 32);
+	border-color: rgb(217, 205, 32);
+	color: rgb(99, 55, 10);
+}
+
+.todoTag.medium svg {
+	fill: rgb(99, 55, 10);
+}
+
+.todoTag.high {
+	background-color: rgb(149, 40, 40);
+	border-color: rgb(149, 40, 40);
+	color: rgb(253, 187, 187);
+}
+
+.todoTag.high svg {
+	fill: rgb(253, 187, 187);
+}
+
 /* Todo Card Completed */
 
 .todoCard.completed {
@@ -336,7 +356,7 @@ projectview {
     opacity: 1;
 }
 
-.todoTag.completed {
+.todoTag.low.completed {
 	background-color: rgb(111, 112, 112);
 	border: 1px solid rgb(111, 112, 112);
 	color: rgb(57, 58, 58);
@@ -350,6 +370,26 @@ projectview {
 
 .todoDueDate.completed svg {
 	fill: rgb(5, 55, 70);
+}
+
+.todoTag.medium.completed {
+	background-color: rgb(170, 160, 25);
+	border-color: rgb(170, 160, 25);
+	color: rgb(99, 55, 10);
+}
+
+.todoTag.medium.completed svg {
+	fill: rgb(99, 55, 10);
+}
+
+.todoTag.high.completed {
+	background-color: rgb(101, 28, 28);
+	border-color: rgb(101, 28, 28);
+	color: rgb(181, 180, 180);
+}
+
+.todoTag.high.completed svg {
+	fill: rgb(181, 180, 180);
 }
 
 

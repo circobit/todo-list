@@ -16,7 +16,9 @@ function toggleComplete(todoCard, checkButton, deleteButton, todoTitle, todoDesc
 	deleteButton.classList.toggle("completed");
 	todoTitle.classList.toggle("todoDone");
 	todoDescription.classList.toggle("todoDone");
+	// Priority
 	todoTag.classList.toggle("completed");
+	// DueDate
 	todoDueDate.classList.toggle("completed");
 };
 
@@ -75,7 +77,9 @@ export const domController = (() => {
 			todoTagAndDueDate.className = "todoTagAndDueDate";
 			todoCardRight.appendChild(todoTagAndDueDate);
 			const todoTag = document.createElement("div");
-			todoTag.className = "todoTag";
+			// Set class based on priority class. This allows to
+			// use CSS to give the tags different style easily.
+			todoTag.className = `todoTag ${todo.priority.toLowerCase()}`;
 			todoTagAndDueDate.appendChild(todoTag);
 			const todoTagSvg = document.createElement("div");
 			todoTagSvg.className = "todoTagSvg";
