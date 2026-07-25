@@ -373,8 +373,8 @@ projectview {
 }
 
 .todoTag.medium.completed {
-	background-color: rgb(170, 160, 25);
-	border-color: rgb(170, 160, 25);
+	background-color: rgb(144, 136, 21);
+	border-color: rgb(144, 136, 21);
 	color: rgb(99, 55, 10);
 }
 
