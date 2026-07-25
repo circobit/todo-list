@@ -179,6 +179,8 @@ projectview {
 	border-radius: 15px;
 	padding: 1.5rem;
 	gap: 1rem;
+	background-color: rgb(67, 66, 66);
+	border: 1px solid rgb(67, 66, 66);
 }
 
 .todoCardLeft {
@@ -216,18 +218,8 @@ projectview {
 	transition: opacity 0.2s ease-in-out;
 }
 
-.todoCheckBtn.completed {
-	background-color: rgb(29, 80, 31);
-	border-color: rgb(29, 80, 31);
-}
-
-/* When the button is marked as done */
-.todoCheckBtn.completed::after {
-    opacity: 1;
-}
-
 .todoDeleteBtn {
-	background-color: rgb(45, 44, 44);
+	background-color: transparent;
 	border: none;
 }
 
@@ -311,6 +303,37 @@ projectview {
 	text-decoration: line-through;
 }
 
+/* Todo Card Completed */
+
+.todoCard.completed {
+	background-color: rgb(45, 44, 44);
+}
+
+.todoCheckBtn.completed {
+	background-color: rgb(29, 80, 31);
+	border-color: rgb(29, 80, 31);
+}
+
+.todoCheckBtn.completed::after {
+    opacity: 1;
+}
+
+.todoTag.completed {
+	background-color: rgb(111, 112, 112);
+	border: 1px solid rgb(111, 112, 112);
+	color: rgb(57, 58, 58);
+}
+
+.todoDueDate.completed {
+	background-color: rgb(7, 98, 126);
+	border: 1px solid rgb(7, 98, 126);
+	color: rgb(5, 55, 70);
+}
+
+.todoDueDate.completed svg {
+	fill: rgb(5, 55, 70);
+}
+
 
 /* Media queries to use hover just if a mouse is available.
 This avoids the buttons to stay colored in mobile. */
@@ -320,6 +343,11 @@ This avoids the buttons to stay colored in mobile. */
 	.closeBtn:hover,
 	nav a:hover {
 		color: white;
+	}
+
+	.todoCard:hover {
+		cursor: pointer;
+		background-color: rgb(76, 75, 75);
 	}
 
 	.todoDeleteBtn svg:hover {
