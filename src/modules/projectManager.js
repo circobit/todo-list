@@ -1,6 +1,6 @@
 // projectManager.js
 
-import { defaultTodos } from "./defaultData.js";
+import { defaultTodos, houseTodos } from "./defaultData.js";
 
 // ToDo Class
 class Todo {
@@ -63,12 +63,18 @@ export const appController = (() => {
 	function init() {
 		// Create default project
 		const defaultProject = new Project("I'm your default Project!");
+		const houseProject = new Project("House Duties");
 		projects.push(defaultProject);
+		projects.push(houseProject);
 		currentProject = defaultProject;
 		// Iterate through the todo's and create them in the default project
 		defaultTodos.forEach((todo) => {
 			const newTodo = new Todo(todo.title, todo.description, todo.dueDate, todo.priority);
 			defaultProject.addTodo(newTodo);
+		})
+		houseTodos.forEach((todo) => {
+			const newTodo = new Todo(todo.title, todo.description, todo.dueDate, todo.priority);
+			houseProject.addTodo(newTodo);
 		})
 	}
 
