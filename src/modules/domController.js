@@ -3,7 +3,7 @@ import trashCan from "../assets/images/icons/trash-can.svg";
 import tag from "../assets/images/icons/tag.svg";
 import calendar from "../assets/images/icons/calendar.svg";
 
-// Helper function to change complete status
+// Helper function to change complete status and re-render
 function toggleComplete(projectId, todoCard, checkButton, deleteButton, todoTitle, todoDescription, todoTag, todoDueDate, todo) {
     todo.toggleComplete();
     
@@ -114,6 +114,13 @@ function createTodoCard(todo, projectId) {
 // Dom controller
 export const domController = (() => {
 
+	// Method to re-render view
+	function switchView(newContent) {
+		const main = document.getElementById("mainContent");
+		main.innerHTML = "";
+		main.appendChild(newContent);
+	}
+
     function renderProject(id) {
         const project = appController.getProjectById(id);
         
@@ -177,5 +184,5 @@ export const domController = (() => {
         return projectListView;
     }
 
-    return { renderProject, renderProjectList };
+    return { switchView, renderProject, renderProjectList };
 })();
