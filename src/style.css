@@ -401,6 +401,7 @@ This avoids the buttons to stay colored in mobile. */
 	.closeBtn:hover,
 	nav a:hover {
 		color: white;
+		cursor: pointer;
 	}
 
 	.todoCard:hover {
