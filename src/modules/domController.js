@@ -208,8 +208,10 @@ export const domController = (() => {
 				// event to the parent of the element, which also has an event 
 				// listener attached
 				event.stopPropagation();
-				appController.deleteProject(project.id);
-				this.switchView(renderProjectList());
+				const isDeleted = appController.deleteProject(project.id);
+				if (isDeleted) {
+                    this.switchView(renderProjectList());
+                }
 			});
         });
 

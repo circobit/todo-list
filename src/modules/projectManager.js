@@ -122,6 +122,7 @@ export const appController = (() => {
 			} else {
 				projects = projects.filter(project => project.id !== id);
 			}
+			return true;
 		}
 	}
 
