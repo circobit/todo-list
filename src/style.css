@@ -417,6 +417,37 @@ projectlistview {
 	color: rgb(160, 160, 160);
 	font-weight: bold;
 	font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+	display: flex;
+	flex-direction: column;
+}
+
+.buttonsDiv {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+#setAsDefault {
+	font-size: clamp(0.5rem, 0.5rem + 1vw, 1rem);
+	background-color: rgb(189, 191, 190);
+	border: 1px solid rgb(189, 191, 190);
+	border-radius: 10px;
+	padding: 0.2em 0.6em;
+}
+
+#deleteProject,
+#changeProjectName {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+}
+
+#deleteProject svg,
+#changeProjectName svg {
+	width: 24px;
+    height: 24px;
+    fill: white;
 }
 
 
@@ -455,6 +486,21 @@ This avoids the buttons to stay colored in mobile. */
 		border-color: rgb(45, 122, 48);
 	}
 
+	#setAsDefault:hover {
+		cursor: pointer;
+		background-color: rgb(224, 226, 224);
+	}
+
+	#deleteProject svg:hover {
+		cursor: pointer;
+		fill: red;
+	}
+
+	#changeProjectName svg:hover {
+		cursor: pointer;
+		fill: rgb(94, 176, 203);
+	}
+
 }
 
 
@@ -479,5 +525,10 @@ This avoids the buttons to stay colored in mobile. */
         flex-direction: column;
         justify-content: center;
         gap: 0.2rem;
+	}
+
+	.projectCard {
+		flex-direction: row;
+		justify-content: space-between;
 	}
 }

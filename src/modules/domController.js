@@ -3,6 +3,7 @@ import { loadProject } from "./loadProject.js";
 import trashCan from "../assets/images/icons/trash-can.svg";
 import tag from "../assets/images/icons/tag.svg";
 import calendar from "../assets/images/icons/calendar.svg";
+import edit from "../assets/images/icons/edit.svg";
 
 // Helper function to change complete status and re-render
 function toggleComplete(projectId, todoCard, checkButton, deleteButton, todoTitle, todoDescription, todoTag, todoDueDate, todo) {
@@ -175,11 +176,30 @@ export const domController = (() => {
 
         const projects = appController.getProjects();
         projects.forEach((project) => {
-            const projectCard = document.createElement("button");
+            const projectCard = document.createElement("div");
             projectCard.className = "projectCard";
             projectCard.dataset.id = project.id;
-            projectCard.textContent = project.name;
             projectListView.appendChild(projectCard);
+			const projectTitle = document.createElement("div");
+			projectTitle.className = "projectTitle";
+			projectTitle.textContent = project.name;
+			projectCard.appendChild(projectTitle);
+			// Add buttons
+			const buttonsDiv = document.createElement("div");
+			buttonsDiv.className = "buttonsDiv";
+			const setAsDefault = document.createElement("button");
+			setAsDefault.textContent = "Set as default";
+			setAsDefault.id = "setAsDefault";
+			const changeProjectName = document.createElement("button");
+			changeProjectName.innerHTML = edit;
+			changeProjectName.id = "changeProjectName";
+			const deleteProject = document.createElement("button");
+			deleteProject.innerHTML = trashCan;
+			deleteProject.id = "deleteProject";
+			buttonsDiv.appendChild(setAsDefault);
+			buttonsDiv.appendChild(changeProjectName);
+			buttonsDiv.appendChild(deleteProject);
+			projectCard.appendChild(buttonsDiv);
 			// Add event listener to open project
 			projectCard.addEventListener('click', () => this.switchView(loadProject(project.id)));
         });
