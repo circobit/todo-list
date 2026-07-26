@@ -1,4 +1,5 @@
 import { appController } from "./projectManager.js";
+import { loadProject } from "./loadProject.js";
 import trashCan from "../assets/images/icons/trash-can.svg";
 import tag from "../assets/images/icons/tag.svg";
 import calendar from "../assets/images/icons/calendar.svg";
@@ -169,7 +170,7 @@ export const domController = (() => {
 
         const sectionTitle = document.createElement("div");
         sectionTitle.className = "sectionTitle";
-        sectionTitle.textContent = "PROJECTS";
+        sectionTitle.textContent = "Projects";
         projectListView.appendChild(sectionTitle);
 
         const projects = appController.getProjects();
@@ -179,6 +180,8 @@ export const domController = (() => {
             projectCard.dataset.id = project.id;
             projectCard.textContent = project.name;
             projectListView.appendChild(projectCard);
+			// Add event listener to open project
+			projectCard.addEventListener('click', () => this.switchView(loadProject(project.id)));
         });
 
         return projectListView;
