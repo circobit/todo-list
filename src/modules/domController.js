@@ -187,16 +187,18 @@ export const domController = (() => {
 			// Add buttons
 			const buttonsDiv = document.createElement("div");
 			buttonsDiv.className = "buttonsDiv";
-			const setAsDefault = document.createElement("button");
-			setAsDefault.textContent = "Set as default";
-			setAsDefault.id = "setAsDefault";
+			if (project.id !== appController.getCurrentProject().id) {
+				const setAsDefault = document.createElement("button");
+				setAsDefault.textContent = "Set as default";
+				setAsDefault.id = "setAsDefault";
+				buttonsDiv.appendChild(setAsDefault);
+			}
 			const changeProjectName = document.createElement("button");
 			changeProjectName.innerHTML = edit;
 			changeProjectName.id = "changeProjectName";
 			const deleteProject = document.createElement("button");
 			deleteProject.innerHTML = trashCan;
 			deleteProject.id = "deleteProject";
-			buttonsDiv.appendChild(setAsDefault);
 			buttonsDiv.appendChild(changeProjectName);
 			buttonsDiv.appendChild(deleteProject);
 			projectCard.appendChild(buttonsDiv);
