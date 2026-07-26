@@ -1,5 +1,8 @@
 // modules/initial-load.js
 
+import { loadDefaultProject, renderProjectList } from "./loadProject.js";
+import { domController, switchView } from "./domController.js";
+
 // Function to open Nav
 function openNav() {
 	document.getElementById("nav").style.width = "250px";
@@ -25,26 +28,33 @@ export function createHeader() {
 	nav.id = "nav";
 	// Menu Items
 	const menuItems = [
-		{ name: "&times;", link: "javascript:void(0)", class: "closeBtn" },
-		{ name: "Home", link: "#" + `${name}` },
-		{ name: "Projects", link: "#" + `${name}` },
-		{ name: "About", link: "#" + `${name}`}
+		{ name: "&times;", link: "javascript:void(0)", id: "closeBtn" },
+		{ name: "Home", id: "home" },
+		{ name: "Projects", id: "projects" },
+		{ name: "About", id: "about" }
 	];
 	menuItems.forEach((item) => {
 		const menuItem = document.createElement("a");
 		if (item.name === "&times;") {
 			menuItem.innerHTML = item.name;
-		} else {
-			menuItem.textContent = item.name;
-		};
-		menuItem.href = item.link;
-		if (item.class) {
-			menuItem.className = item.class; 
-			menuItem.id = item.class;
-			// Event listener to close button
+			menuItem.className = item.id;
+			menuItem.href = item.link;
 			menuItem.addEventListener("click", () => closeNav());
 		} else {
+			menuItem.textContent = item.name;
 			menuItem.className = "menuItem";
+			menuItem.id = item.id;
+		};
+		if (item.id === "home") {
+			menuItem.addEventListener("click", () => {
+				domController.switchView(loadDefaultProject());
+				closeNav();
+			});
+		} else if (item.id === "projects") {
+			menuItem.addEventListener("click", () => {
+				domController.switchView(renderProjectList());
+				closeNav();
+			});
 		};
 		nav.appendChild(menuItem);
 	})
