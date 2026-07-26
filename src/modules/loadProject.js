@@ -3,6 +3,12 @@
 import { domController } from "./domController.js";
 import { appController } from "./projectManager.js";
 
+export function loadProject(id) {
+	const projectDiv = domController.renderProject(id);
+
+	return projectDiv;
+}
+
 export function loadDefaultProject() {
 	const currentProject = appController.getCurrentProject();
 	const projectDiv = domController.renderProject(currentProject.id);
