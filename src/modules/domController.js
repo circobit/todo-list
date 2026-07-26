@@ -192,6 +192,11 @@ export const domController = (() => {
 				setAsDefault.textContent = "Set as default";
 				setAsDefault.id = "setAsDefault";
 				buttonsDiv.appendChild(setAsDefault);
+				setAsDefault.addEventListener('click', (event) => {
+					event.stopPropagation();
+					appController.setCurrentProject(project.id);
+					this.switchView(this.renderProjectList());
+				});
 			}
 			const changeProjectName = document.createElement("button");
 			changeProjectName.innerHTML = edit;
