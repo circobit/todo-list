@@ -30,8 +30,7 @@ export function createHeader() {
 	const menuItems = [
 		{ name: "&times;", link: "javascript:void(0)", id: "closeBtn" },
 		{ name: "Home", id: "home" },
-		{ name: "Projects", id: "projects" },
-		{ name: "About", id: "about" }
+		{ name: "Projects", id: "projects" }
 	];
 	menuItems.forEach((item) => {
 		const menuItem = document.createElement("a");
