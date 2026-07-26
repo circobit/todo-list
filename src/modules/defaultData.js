@@ -1,6 +1,6 @@
 // defaultData.js
 
-export const defaultTodos = [
+export const infraTodos = [
     {
         title: "Migrate legacy database to AWS RDS",
         description: "Ensure zero downtime during the switch and verify all automated backups are functioning properly before execution.",
