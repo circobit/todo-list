@@ -210,7 +210,7 @@ export const domController = (() => {
 				event.stopPropagation();
 				const isDeleted = appController.deleteProject(project.id);
 				if (isDeleted) {
-                    this.switchView(renderProjectList());
+                    this.switchView(this.renderProjectList());
                 }
 			});
         });
