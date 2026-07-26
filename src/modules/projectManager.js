@@ -107,7 +107,22 @@ export const appController = (() => {
 
 	// Delete project
 	function deleteProject(id) {
-		projects = projects.filter(project => project.id !== id);
+		// If there are no other projects left, cannot delete.
+		// There must be at least one default project.
+		if (projects.length === 1) {
+			alert("Cannot delete default project!");
+		} else {
+			// Check if project to delete is the default one.
+			// If it is the default project, set another project
+			// as default before deleting it.
+			if (id === currentProject.id) {
+				const fallbackProject = projects.find(project => project.id !== id);
+				this.setCurrentProject(fallbackProject.id);
+				projects = projects.filter(project => project.id !== id);
+			} else {
+				projects = projects.filter(project => project.id !== id);
+			}
+		}
 	}
 
 	// Get project by id
