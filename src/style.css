@@ -161,8 +161,9 @@ projectview {
 }
 
 
-/* Project Title */
+/* Project Title and Project Section */
 
+.sectionTitle,
 .projectDiv {
 	font-size: clamp(1rem, 1.5rem + 0.5vw, 3rem);
 	color: white;
@@ -393,6 +394,32 @@ projectview {
 }
 
 
+/* Project View */
+
+projectlistview {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding-top: 1rem;
+}
+
+/* Project Card */
+
+.projectCard {
+	width: 100%;
+	text-align: left;
+	border: 1px solid grey;
+	border-radius: 15px;
+	padding: 1.5rem;
+	gap: 1rem;
+	background-color: rgb(67, 66, 66);
+	border: 1px solid rgb(67, 66, 66);
+	color: rgb(160, 160, 160);
+	font-weight: bold;
+	font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+}
+
+
 /* Media queries to use hover just if a mouse is available.
 This avoids the buttons to stay colored in mobile. */
 
@@ -404,9 +431,14 @@ This avoids the buttons to stay colored in mobile. */
 		cursor: pointer;
 	}
 
-	.todoCard:hover {
+	.todoCard:hover,
+	.projectCard:hover {
 		cursor: pointer;
 		background-color: rgb(76, 75, 75);
+	}
+
+	.projectCard:hover {
+		color: white;
 	}
 
 	.todoDeleteBtn svg:hover {
