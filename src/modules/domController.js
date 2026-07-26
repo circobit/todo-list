@@ -200,8 +200,17 @@ export const domController = (() => {
 			buttonsDiv.appendChild(changeProjectName);
 			buttonsDiv.appendChild(deleteProject);
 			projectCard.appendChild(buttonsDiv);
-			// Add event listener to open project
+			// Event listener to open project
 			projectCard.addEventListener('click', () => this.switchView(loadProject(project.id)));
+			// Event listener to delete project
+			deleteProject.addEventListener('click', (event) => {
+				// event.stopPropagation() is used to stop the propagation of the 
+				// event to the parent of the element, which also has an event 
+				// listener attached
+				event.stopPropagation();
+				appController.deleteProject(project.id);
+				this.switchView(renderProjectList());
+			});
         });
 
         return projectListView;
