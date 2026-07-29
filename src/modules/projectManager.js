@@ -132,6 +132,12 @@ export const appController = (() => {
 		return projects.find(project => project.id === id);
 	}
 
+	// Change project name
+	function changeProjectName(id, name) {
+		const project = getProjectById(id);
+		project.name = name;
+	}
+
 	// Return public methods
-	return { getProjects, getCurrentProject, setCurrentProject, addProject, deleteProject, getProjectById };
+	return { getProjects, getCurrentProject, setCurrentProject, addProject, deleteProject, getProjectById, changeProjectName };
 })();

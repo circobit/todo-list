@@ -26,6 +26,57 @@ function toggleComplete(projectId, todoCard, checkButton, deleteButton, todoTitl
     }, 600);
 }
 
+// Helper function to create dialog to change poroject name
+function createDialogEditProject() {
+	const dialogEditProject = document.createElement("dialog");
+	dialogEditProject.id = "dialogChangeProjectName";
+	const dialogEPCloseBtn = document.createElement("div");
+	dialogEPCloseBtn.className = "dialogCloseBtn";
+	dialogEPCloseBtn.innerHTML = "&times;";
+	dialogEditProject.appendChild(dialogEPCloseBtn);
+	const dialogEPForm = document.createElement("form");
+	dialogEPForm.className = "dialogEPForm";
+	dialogEditProject.appendChild(dialogEPForm);
+	const dialogEPLabel = document.createElement("label");
+	dialogEPLabel.className = "dialogEPLabel";
+	dialogEPLabel.textContent = "New project name";
+	dialogEPForm.appendChild(dialogEPLabel);
+	const dialogEPInput = document.createElement("input");
+	dialogEPInput.className = "dialogEPInput";
+	dialogEPForm.appendChild(dialogEPInput);
+	const dialogEPSubmit= document.createElement("button");
+	dialogEPSubmit.className = "dialogEPSubmit";
+	dialogEPSubmit.textContent = "Change name";
+	dialogEPForm.appendChild(dialogEPSubmit);
+
+	// Event listener to close dialog
+	dialogEPCloseBtn.addEventListener('click', (event) => {
+		dialogEditProject.close();
+	})
+
+	// Event listener to submit form
+	dialogEPForm.addEventListener('submit', (event) => {
+		// Refrain the browser from reloading the page, which
+		// is the default behavior on submit
+		event.preventDefault();
+		// Get project id and new name
+		const projectId = dialogEditProject.dataset.projectId;
+		const newName = dialogEPInput.value;
+		// If input is not inserted, do nothing
+		if (!newName) return;
+		// Run the appController method to change the project name
+		appController.changeProjectName(projectId, newName);
+		// Clean input
+		dialogEPInput.value = "";
+		// Close dialog
+		dialogEditProject.close();
+		// Re-render view to show list of projects with name applied
+		domController.switchView(domController.renderProjectList());
+	});
+	
+	return dialogEditProject;
+}
+
 // Helper to build individial todo card
 function createTodoCard(todo, projectId) {
     const todoCard = document.createElement("div");
@@ -116,6 +167,10 @@ function createTodoCard(todo, projectId) {
 // Dom controller
 export const domController = (() => {
 
+	// Dialog to change project name
+	const dialogChangeProjectName = createDialogEditProject();
+	document.body.appendChild(dialogChangeProjectName);
+
 	// Method to re-render view
 	function switchView(newContent) {
 		const main = document.getElementById("mainContent");
@@ -190,7 +245,7 @@ export const domController = (() => {
 			if (project.id !== appController.getCurrentProject().id) {
 				const setAsDefault = document.createElement("button");
 				setAsDefault.textContent = "Set as default";
-				setAsDefault.id = "setAsDefault";
+				setAsDefault.className = "setAsDefault";
 				buttonsDiv.appendChild(setAsDefault);
 				setAsDefault.addEventListener('click', (event) => {
 					event.stopPropagation();
@@ -200,10 +255,15 @@ export const domController = (() => {
 			}
 			const changeProjectName = document.createElement("button");
 			changeProjectName.innerHTML = edit;
-			changeProjectName.id = "changeProjectName";
+			changeProjectName.className = "changeProjectName";
+			changeProjectName.addEventListener('click', (event) => {
+				event.stopPropagation();
+				dialogChangeProjectName.dataset.projectId = project.id;
+				dialogChangeProjectName.showModal();
+			});
 			const deleteProject = document.createElement("button");
 			deleteProject.innerHTML = trashCan;
-			deleteProject.id = "deleteProject";
+			deleteProject.className = "deleteProject";
 			buttonsDiv.appendChild(changeProjectName);
 			buttonsDiv.appendChild(deleteProject);
 			projectCard.appendChild(buttonsDiv);
